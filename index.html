@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#c0436b"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <meta name="apple-mobile-web-app-title" content="ChromaCraft"/>
+  <link rel="manifest" href="manifest.json"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <title>ChromaCraft – Home</title>
+</head>
+<body>
+
+  <!-- Install Banner -->
+  <div id="install-banner">
+    <span>📲 Install ChromaCraft on your phone!</span>
+    <div style="display:flex;gap:6px;">
+      <button id="install-btn">Install</button>
+      <button class="close-btn" onclick="document.getElementById('install-banner').style.display='none'">✕</button>
+    </div>
+  </div>
+
+  <div class="site-title">Chroma<span>Craft</span></div>
+
+  <div class="layout">
+    <div class="menu-division">
+      <h2>Menu</h2>
+      <a href="index.html" class="active">Home</a>
+      <a href="textcolour.html">Text Colour Selection</a>
+    </div>
+    <div class="contents-division">
+      <h2>Contents</h2>
+      <div class="home-content">
+        <div class="colour-dots">
+          <div class="dot" style="background:#222"></div>
+          <div class="dot" style="background:#2e7d32"></div>
+          <div class="dot" style="background:#f9a825"></div>
+          <div class="dot" style="background:#1565c0"></div>
+        </div>
+        <h1>Demonstration of<br/>Change of Text Colour</h1>
+        <p>Enter your name, choose a colour, and watch it come alive.</p>
+        <a href="textcolour.html" class="btn-submit">Try it now →</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', e => {
+      e.preventDefault();
+      deferredPrompt = e;
+      document.getElementById('install-banner').style.display = 'flex';
+    });
+
+    document.getElementById('install-btn').addEventListener('click', () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(() => {
+          deferredPrompt = null;
+          document.getElementById('install-banner').style.display = 'none';
+        });
+      }
+    });
+  </script>
+</body>
+</html>

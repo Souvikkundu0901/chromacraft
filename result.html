@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#c0436b"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link rel="manifest" href="manifest.json"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <title>ChromaCraft – Result</title>
+</head>
+<body>
+
+  <div class="site-title">Chroma<span>Craft</span></div>
+
+  <div class="layout">
+    <div class="menu-division">
+      <h2>Menu</h2>
+      <a href="index.html">Home</a>
+      <a href="textcolour.html" class="active">Text Colour Selection</a>
+    </div>
+    <div class="contents-division">
+      <h2>Contents</h2>
+      <div class="result-content">
+        <p class="result-label">Hello! Your name in <strong id="colour-label">—</strong> is:</p>
+        <div class="result-name" id="result-name">—</div>
+        <a href="textcolour.html" class="back-link">← Try another colour</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+
+    const colorMap = {
+      black: '#222222',
+      green: '#2e7d32',
+      yellow: '#c49000',
+      blue:  '#1565c0'
+    };
+
+    const name   = sessionStorage.getItem('cc_name')   || 'Guest';
+    const colour = sessionStorage.getItem('cc_colour') || 'black';
+
+    document.getElementById('result-name').textContent  = name;
+    document.getElementById('result-name').style.color  = colorMap[colour];
+    document.getElementById('colour-label').textContent = colour;
+  </script>
+</body>
+</html>

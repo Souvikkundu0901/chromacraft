@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#c0436b"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link rel="manifest" href="manifest.json"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <title>ChromaCraft – Text Colour Selection</title>
+</head>
+<body>
+
+  <div class="site-title">Chroma<span>Craft</span></div>
+
+  <div class="layout">
+    <div class="menu-division">
+      <h2>Menu</h2>
+      <a href="index.html">Home</a>
+      <a href="textcolour.html" class="active">Text Colour Selection</a>
+    </div>
+    <div class="contents-division">
+      <h2>Contents</h2>
+
+      <div class="form-group">
+        <label for="username">Name :</label>
+        <input type="text" id="username" placeholder="Enter your name"/>
+      </div>
+
+      <div class="form-group">
+        <label for="textcolour">Text Colour :</label>
+        <select id="textcolour">
+          <option value="black">Black</option>
+          <option value="green">Green</option>
+          <option value="yellow">Yellow</option>
+          <option value="blue">Blue</option>
+        </select>
+      </div>
+
+      <button class="btn-submit" onclick="submitForm()">SUBMIT</button>
+    </div>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+
+    function submitForm() {
+      const name = document.getElementById('username').value.trim();
+      const colour = document.getElementById('textcolour').value;
+      if (!name) { alert('Please enter your name!'); return; }
+      sessionStorage.setItem('cc_name', name);
+      sessionStorage.setItem('cc_colour', colour);
+      window.location.href = 'result.html';
+    }
+  </script>
+</body>
+</html>

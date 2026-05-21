@@ -1,0 +1,24 @@
+{
+  "name": "ChromaCraft",
+  "short_name": "ChromaCraft",
+  "description": "Demonstration of change of text colour",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffe4ec",
+  "theme_color": "#c0436b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
