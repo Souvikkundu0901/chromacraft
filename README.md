@@ -1,6 +1,6 @@
 # 🎨 ChromaCraft
 
-> A Progressive Web App (PWA) demonstrating dynamic text colour changes — built for IGNOU BCSL-057 Web Assignment 6.
+> A Progressive Web App (PWA) demonstrating dynamic text colour changes .
 
 ---
 
